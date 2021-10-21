@@ -1,0 +1,16 @@
+Front end(User): Display all products
+    - Send data from server
+    - Send order details back to server
+
+Front end(Admin): Allow editing of products, prices and promos
+    - Send data from server
+    - Send product details back to server
+
+Server: Handle API calls and db queries
+    - Get info for POS from DB
+    - Process payments(Stripe?)
+    - Setup using microservices
+        - One for payments
+        - One for POS data(User)
+        - One for POS data(Admin)
+        - One for Auth
