@@ -1,9 +1,8 @@
 import React from 'react';
-import UpperMenu from './UpperMenu.js'
 class Settings extends React.Component {
     render() {
         return (
-            <UpperMenu></UpperMenu>
+            <p1>Settings</p1>
 
         );
     }
