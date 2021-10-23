@@ -1,0 +1,11 @@
+.product {
+    width: 150px;
+}
+.product:hover {
+    filter: brightness(50%);
+}
+
+.product-picture{
+    width: 140px;
+    height:140px;
+}

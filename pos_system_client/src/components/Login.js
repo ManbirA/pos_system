@@ -29,7 +29,7 @@ class Login extends React.Component {
 
     handleSubmit(event) {
         alert('Form submitted: ' + this.state.usernameValue + ' ' + this.state.passwordValue);
-        // Make API call 
+        // TODO: Make API call to verify login 
         // Navigate to Home page
         this.props.history.push('/home');
         event.preventDefault();
