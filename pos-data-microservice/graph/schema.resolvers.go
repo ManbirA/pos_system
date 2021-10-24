@@ -5,18 +5,24 @@ package graph
 
 import (
 	"context"
-	"fmt"
 
+	"github.com/ManbirA/pos-data-microservice/database"
 	"github.com/ManbirA/pos-data-microservice/graph/generated"
 	"github.com/ManbirA/pos-data-microservice/graph/model"
 )
 
-func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
-	panic(fmt.Errorf("not implemented"))
+var db = database.Connect()
+
+func (r *mutationResolver) CreateProduct(ctx context.Context, input *model.NewProduct) (*model.Product, error) {
+	return db.Save(input), nil
 }
 
-func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
-	panic(fmt.Errorf("not implemented"))
+func (r *queryResolver) Product(ctx context.Context, id string) (*model.Product, error) {
+	return db.FindByID(id), nil
+}
+
+func (r *queryResolver) Products(ctx context.Context) ([]*model.Product, error) {
+	return db.All(), nil
 }
 
 // Mutation returns generated.MutationResolver implementation.
