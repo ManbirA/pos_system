@@ -7,35 +7,44 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            imgArray: []
+            propductArray: []
         };
         this.selectItem = this.selectItem.bind(this);
 
     }
 
     componentDidMount() {
-        // TODO: Make API call to get products
-        this.setState({
-            imgArray: [{name: "Pizza", price: 5.99, link:'pizza_img.png'},
-            {name:"Ice cream", price:2.99, link: 'ice_cream_img.png'}]
-        });
+        fetch("http://localhost:8080/products")
+            .then(products => products.json())
+            .then((result) => {
+                var allProduct = [];
+                for(var key of Object.keys(result)){
+                    allProduct.push({name: result[key].name, price: result[key].price, inventory: result[key].inventory });
+                }
+                this.setState({
+                    propductArray: allProduct
+                });
+            }, (error) => {
+                console.log(error);
+            });
     }
 
 
     render(){
-        let imageArrayRender = this.state.imgArray.map(image => {
+        let productArrayRender = this.state.propductArray.map(product => {
             return (
                 <Item 
-                    name={image.name}
-                    price={image.price}
+                    name={product.name}
+                    price={product.price}
                     selectItem={this.selectItem}
-                    link={image.link}
+                    link={"logo512.png"}
+
                 />
             );
         });
         return (
             <>
-                {imageArrayRender}
+                {productArrayRender}
             </>
         );
     }

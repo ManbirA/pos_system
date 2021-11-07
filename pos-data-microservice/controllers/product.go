@@ -51,7 +51,7 @@ func (uc ProductController) GetProduct (w http.ResponseWriter, r *http.Request, 
 	}
 
 	// write response
-	w.Header().Set("Content-Type", "applications/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.WriteHeader(http.StatusOK)
 	fmt.Fprintf(w, "%s\n", productJson)
 }
@@ -87,7 +87,7 @@ func (uc ProductController) GetAllProducts (w http.ResponseWriter, r *http.Reque
 	}
 
 	// write response
-	w.Header().Set("Content-Type", "applications/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.WriteHeader(http.StatusOK)
 	fmt.Fprintf(w, "%s\n", productsJson)
 }
@@ -119,7 +119,7 @@ func (uc ProductController) CreateProduct(w http.ResponseWriter, r *http.Request
 		log.Fatal(err)
 		w.WriteHeader(http.StatusBadRequest)
 	}
-	w.Header().Set("Content-Type", "applications/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.WriteHeader(http.StatusCreated)
 	fmt.Fprintf(w, "%s\n", rtrProduct)
 
