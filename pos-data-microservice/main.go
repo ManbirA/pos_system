@@ -16,10 +16,16 @@ func main() {
 	
 	r := httprouter.New()
 	uc := controllers.NewUserController(getSession())
+	pc := controllers.NewProductController(getSession())
 
 	r.GET("/user/:id", uc.GetUser)
 	r.POST("/user", uc.CreateUser)
 	r.DELETE("/user/:id", uc.DeleteUser)
+
+	r.GET("/product/:id", pc.GetProduct)
+	r.GET("/products", pc.GetAllProducts)
+	r.POST("/product", pc.CreateProduct)
+
 
 	http.ListenAndServe("localhost: 8080", r);
 

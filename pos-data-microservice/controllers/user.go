@@ -46,7 +46,6 @@ func (uc UserController) GetUser (w http.ResponseWriter, r *http.Request, p http
 
 func (uc UserController) CreateUser(w http.ResponseWriter, r *http.Request, _ httprouter.Params){
 	u := models.NewUser{}
-
 	json.NewDecoder(r.Body).Decode(&u);
 
 	collection := uc.session.Database("pos_system").Collection("User")
